@@ -1,0 +1,281 @@
+﻿@model Furniture.Models.EF.Product
+@{
+    ViewBag.Title = "Chỉnh sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayOut.cshtml";
+}
+
+
+<!-- Left navbar links -->
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/product" class="nav-link">Sản phẩm</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Chỉnh sửa</a>
+        </li>
+    </ul>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Chỉnh sửa sản phẩm</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/product">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thông tin chỉnh sửa sản phẩm</h3>
+
+            <div class="card-tools">
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin sản phẩm</a></li>
+                             
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tên sản phẩm</label>
+                                        @Html.TextBoxFor(x => x.name, new { @class = "form-control", @placeholder = "Tên sản phẩm" })
+                                        @Html.ValidationMessageFor(x => x.name, null, new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Giá sản phẩm</label>
+                                        @Html.TextBoxFor(x => x.price, new { @class = "form-control", @placeholder = "Giá sản phẩm" })
+                                        @Html.ValidationMessageFor(x => x.price, null, new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Mô tả</label>
+                                        @Html.TextAreaFor(x => x.description, new { @class = "form-control", @placeholder = "Chi tiết", @id = "txtDescription" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Danh mục sản phẩm</label>
+                                        @Html.DropDownListFor(x => x.categoryid, ViewBag.ProductCategory as SelectList, "Chọn danh mục sản phẩm", new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Meta</label>
+                                        @Html.TextBoxFor(x => x.meta, new { @class = "form-control", @placeholder = "Meta" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Màu sắc</label>
+                                        @Html.TextBoxFor(x => x.color, new { @class = "form-control", @placeholder = "Màu sắc" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Kích thước</label>
+                                        @Html.TextBoxFor(x => x.size, new { @class = "form-control", @placeholder = "Kích thước" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Hide</label>
+                                        @Html.DropDownListFor(x => x.hide, (new[] { new SelectListItem { Text = "True", Value = "true" }, new SelectListItem { Text = "False", Value = "false" } }), new { @class = "form-control" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Thứ tự</label>
+                                        @Html.TextBoxFor(x => x.order, new { @class = "form-control", @placeholder = "Thứ tự" })
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <input type="button" id="TaiAnh" onclick="BrowserServer()" value="Tải ảnh" class="btn btn-success" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Ảnh</th>
+                                                        <th>Ảnh đại diện</th>
+                                                        <th>Thao tác</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbHtml">
+                                                    @if (Model != null)
+                                                    {
+
+                                                        foreach (var i in Model.ProductImages)
+                                                        {
+
+                                                            if (i.Avatar == true)
+                                                            {
+
+                                                                <tr id="throw_@i.id">
+
+                                                                    <td><img width="80" src="@i.img" /><input type="hidden" value="@i.img" name="OldImages" /></td>
+                                                                    <td><input type="radio" name="ImgAvatar" value="@i.id" checked="checked" /></td>
+                                                                    <td>
+                                                                        <a href="#" class="btn btn-sm btn-danger btnDel" data-id="@i.id">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                                                            </svg>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+
+                                                                <tr id="throw_@i.id">
+
+                                                                    <td><img width="80" src="@i.img" /><input type="hidden" value="@i.img" name="OldImages" /></td>
+                                                                    <td><input type="radio" name="ImgAvatar" value="@i.id" /></td>
+
+                                                                    <td>
+                                                                        <a href="#" class="btn btn-sm btn-danger btnDel" data-id="@i.id">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                                                            </svg>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <input type="hidden" id="CurrentId" value="0" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                           
+
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                        <div class="form-group" style="margin-left:30px;">
+                            <a class="btn btn-danger" href="/admin/product">Previous</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+
+                    </div>
+                    <!-- /.card -->
+
+                }
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDescription', {
+                customConfig: '/content/ckeditor/config.js',
+                extraAllowedContent: 'span'
+            });
+            $('body').on('click', '.btnDel', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Do you want to delete?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/product/DeleteImg',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#throw_' + id).remove();
+                            }
+                        }
+                    })
+                }
+            });
+            $('body').on('click', '.btnDelete', function () {
+                var conf = confirm("Do you want to delete this picture?");
+                if (conf === true) {
+                    var _id = $(this).data('id');
+                    $('#throw_' + _id).fadeTo('fast', 0.5, function () {
+                        $(this).slideUp('fast', function () { $(this).remove(); });
+                    });
+                    var cur = $('#CurrentId').val();
+                    var curID = parseInt(cur) - 1;
+                    $('#CurrentId').val(curID);
+                }
+            });
+        });
+        function BrowserServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+               addImageProduct(fileUrl);
+            };
+            finder.popup();
+        }
+        function addImageProduct(url) {
+            var cur = $('#CurrentId').val();
+            var curID = parseInt(cur) + 1;
+            var str = "";
+            if (curID == 1) {
+                str += `<tr id="throw_${curID}">
+                 
+                    <td><img  width="80" src="${url}" /><input type="hidden" value="${url}" name="Images"/></td>
+                    <td><input type="radio" name="ImgAvatar" value="${curID}" /></td>
+                    <td><a href="#" class="btn btn-sm btn-danger btnDelete" data-id="${curID}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                      </svg>
+                    </a></td>
+                       </tr > `;
+            }
+            else {
+                str += `<tr id="throw_${curID}">
+                  
+                    <td><img  width="80" src="${url}" /><input type="hidden" value="${url}" name="Images"/></td>
+                    <td><input type="radio" name="ImgAvatar" value="${curID}" /></td>
+                    <td><a href="#" class="btn btn-sm btn-danger btnDelete" data-id="${curID}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                      </svg>
+                    </a></td>
+                       </tr > `;
+            }
+
+            $('#tbHtml').append(str);
+            $('#CurrentId').val(curID);
+        }
+    </script>
+
+}
+

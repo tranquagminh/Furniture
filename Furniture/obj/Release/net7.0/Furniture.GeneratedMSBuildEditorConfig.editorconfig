@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Furniture
+build_property.RootNamespace = Furniture
+build_property.ProjectDir = D:\CongNghe.Net\Temp\Furniture\Furniture\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\CongNghe.Net\Temp\Furniture\Furniture
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Default/getMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXERlZmF1bHRcZ2V0TWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Default/getNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXERlZmF1bHRcZ2V0TmV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Default/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXERlZmF1bHRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXEhvbWVcQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXEhvbWVcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/Shared/_MyLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXFNoYXJlZFxfTXlMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Furniture/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RnVybml0dXJlXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CongNghe.Net/Temp/Furniture/Furniture/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3zoxcxj8f2

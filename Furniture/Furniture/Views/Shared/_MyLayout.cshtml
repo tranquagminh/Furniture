@@ -1,0 +1,241 @@
+﻿
+@{
+    ViewBag.Title = "_MyLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <link rel='shortcut icon' href='~/Content/images/icon_furniture.png' />
+    <title>MNL Funiture</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css?parameter=1">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css?parameter=1">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/Content/css/responsive.css?parameter=1">
+    <!-- fevicon -->
+    <link rel="icon" href="~/Content/images/fevicon.png" type="image/gif" />
+    <!-- multiitem-->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/css/multiitem.css?parameter=1?parameter=1">*@
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/jquery.mCustomScrollbar.min.css?parameter=1?parameter=1">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css?parameter=1">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css?parameter=1">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css?parameter=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css?parameter=1" media="screen">
+    <style>
+        .badge {
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 50%;
+        }
+
+        .badge-warning[href] {
+            background-color: #c67605;
+        }
+
+        #checkout_items {
+            font-size: 12px;
+            background: #000;
+            color: #fff;
+            padding: 3px 5px;
+            vertical-align: top;
+            margin-left: -10px;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    <!-- header section start -->
+    <div class="header_section">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="logo"><a href="index.html"><img src="~/Content/images/logo.png"></a></div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @{Html.RenderAction("getMenu", "Default");}
+                    <a href="/shoppingcart">
+                        @*<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:24px"></i>*@
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                        <span class='badge badge-warning' id='checkout_items'> 0 </span>
+                    </a>
+                    <div class="search_icon">
+                        <ul>
+                            <li><a href="#"><img src="~/Content/images/search-icon.png"></a></li>
+                            <li><a href="#">LOGIN</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- header section end -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <!-- footer section start -->
+    <div class="footer_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <h1 class="customer_text">CONTACT INFORMATION</h1>
+                    <p class="footer_lorem_text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z" />
+                            <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z" />
+                        </svg> Locate: 19 Nguyen Huu Tho,
+                        Tan Phong, Quan 7,
+                        Thanh Pho Ho Chi Minh, Viet Nam
+                        <br />
+                        <br />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                        </svg> 012345789
+                        0233 458 7896
+                        <br />
+                        <br />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mailbox" viewBox="0 0 16 16">
+                            <path d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z" />
+                            <path d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z" />
+                        </svg> customerca@MNL.com
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h1 class="customer_text">ABOUT US</h1>
+                    <p class="footer_lorem_text">
+                        The story of us
+                        <br />
+                        <br />
+                        MNL's family
+                        <br />
+                        <br />
+                        The chain of store in VN
+                        <br />
+                        <br />
+                        Catalogue
+
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h1 class="customer_text">OUR SERVICES</h1>
+                    <p class="footer_lorem_text1">
+                        Discount policy & commercial cooperation
+                        <br />
+                        <br />
+                        Interior consulting services & 3D drawings
+                        <br />
+                        <br />
+                        Loyalty card
+                        <br />
+                        <br />
+                        Referral Program
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h1 class="customer_text">QUICK PATH</h1>
+                    <p class="footer_lorem_text">
+                        Delivery & Warranty
+                        <br />
+                        <br />
+                        Privacy policy of personal information
+                        <br />
+                        <br />
+                        Payment Privacy Policy
+                        <br />
+                        <br />
+                        Terms and Conditions of Purchase
+                    </p>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><a href="#">Subscribe</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  footer section end -->
+    <!-- copyright section start -->
+    <!-- copyright section end -->
+    <!-- Javascript files-->
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/popper.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/js/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/js/plugin.js"></script>
+    @*sidebar*@
+    <script src="~/Scripts/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Scripts/js/custom.js"></script>
+    @*javascript*@
+    <script src="~/Scripts/js/owl.carousel.js"></script>
+    @*<script src="~/Scripts/js/multiitem.js"></script>*@
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jsShopping.js"></script>
+
+
+    <script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Content/clients/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="~/Content/clients/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="~/Content/clients/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/clients/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="~/Content/clients/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="~/Content/clients/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Content/clients/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="~/Content/clients/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="~/Content/clients/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="~/Content/clients/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/clients/dist/js/adminlte.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <!-- Thư viện Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Thư viện jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Thư viện Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Khởi tạo carousel
+            $('.carousel').carousel();
+        });
+    </script>
+
+</body>
+</html>

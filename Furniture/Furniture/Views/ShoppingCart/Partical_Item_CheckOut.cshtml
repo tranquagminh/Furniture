@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<Furniture.Models.ShoppingCartItem>
+
+
+@if (Model != null && Model.Any())
+{
+    <h3>Your items <span style="float:right; margin-right:40px">@Model.Count()</span></h3>
+
+    double TongTien = 0;
+<div style="border:1px solid #808080;">
+    <table class="table">
+
+        @foreach (var item in Model)
+        {
+            TongTien += item.TotalPrice;
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+        <tr>
+            <td><b>Total Price</b></td>
+            <td><b>@TongTien</b></td>
+        </tr>
+    </table>
+    </div>
+}
+        else
+        {
+
+
+        }
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Furniture.Models.EF.News>
+
+
+@{
+    var first = true;
+}
+@foreach (var item in Model)
+{
+
+    <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
+        <div class="card cardnews d-flex align-items-center justify-content-top">
+            <img class="d-block w-100" src="@item.img" alt="@item.name" style="background-size: cover;">
+            <h3 class="temper_text" style="margin: 0; padding-left:20px"><a href="/tin-tuc/@item.meta/@item.id">@item.name</a></h3>
+            <p class="dololr_text" style="margin: 0; padding-left:20px">@item.description</p>
+        </div>
+    </div>
+
+
+    first = false;
+}
+
+<style>
+    .cardnews {
+        width: 800px;
+        height: 800px;
+        margin: 0 auto; /* Căn giữa theo chiều ngang */
+        
+
+</style>

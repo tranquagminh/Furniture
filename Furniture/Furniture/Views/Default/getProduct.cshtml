@@ -1,0 +1,32 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Furniture.Models.EF.Product>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="furnitures_section layout_padding">
+    <div class="container">
+        <div class="furnitures_section2 layout_padding">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="container_main">
+                            <img src="@item.img" alt="Avatar" class="image">
+                            <h2 class="modern_text">@item.name</h2>
+                            <div class="overlay">
+                                <a href="/@ViewBag.meta/@item.meta/@item.id" class="icon" title="User Profile">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+            @Html.PagedListPager(Model, page => Url.Action("Index", "Product", new { page, pageSize = 3, searchString = @Context.Request.QueryString["searchString"]}))
+        </div>
+    </div>
+</div>
+
+
+

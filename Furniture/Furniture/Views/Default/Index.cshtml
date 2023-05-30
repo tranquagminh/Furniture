@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
+}
+<!-- banner section start -->
+<div class="banner_section layout_padding">
+    <h1 class="furniture_text">FURNITURE</h1>
+    <p class="there_text">Spring Furniture Clearance . Summer stockpile. UP TO 60% OFF . Beautiful house with MNL Furniture</p>
+    <div class="contact_bt_main">
+        <div class="contact_bt"><a href="#">Shop now</a></div>
+    </div>
+</div>
+<!-- banner section end -->
+<!--category section start-->
+<div class="projects_section layout_padding">
+    <div class="container">
+        <h1 class="our_text" id="CATEGORY">Our projects</h1>
+        <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+        @{Html.RenderAction("getCategory", "Default");}
+    </div>
+</div>
+<!--category section end-->
+<!-- about section start -->
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="about_text">About Us</h1>
+                <p class="lorem_text">The extended family has grown over the years. Today, MNL is a dynamic team, united and guided by a common passion for interiors. The brand covers all industries; from creation, sourcing and manufacturing to product distribution.</p>
+                <div class="read_bt1"><a href="/about-us">Read More</a></div>
+            </div>
+            <div class="col-md-6">
+                <div class="image_1"><img src="~/Content/images/img-1.png"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->
+<!-- news section start -->
+<div class="furnitures_section layout_padding">
+    <div class="container">
+        <h1 class="our_text">News</h1>
+        <p class="ipsum_text">There are a lot of news of our customers.</p>
+        <div class="furnitures_section2 layout_padding">
+            <div id="costum_slider" class="carousel" data-ride="carousel">
+                <div class="carousel-inner">
+                    @{Html.RenderAction("getNews", "Default");}
+                </div>
+                <a class="carousel-control-prev" href="#costum_slider" role="button" data-slide="prev">
+                    <i class=""><img src="~/Content/images/left-arrow.png"></i>
+                </a>
+                <a class="carousel-control-next" href="#costum_slider" role="button" data-slide="next">
+                    <i class=""><img src="~/Content/images/right-arrow.png"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- news section end -->
+<!-- who section start -->
+<div class="who_section layout_padding">
+    <div class="container">
+        <h1 class="who_taital">who we are ?</h1>
+        <h4 class="designer_text">DESIGNERS & INNOVATORS</h4>
+        <p class="lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi utLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</p>
+    </div>
+    <div class="get_bt_main">
+        <div class="get_bt"><a href="#">Get A Quote</a></div>
+    </div>
+</div>
+<!-- who section end -->

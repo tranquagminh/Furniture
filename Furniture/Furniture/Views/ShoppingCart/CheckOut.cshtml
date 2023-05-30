@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<style>
+    .error{
+        color:red;
+    }
+</style>
+
+<div class="projects_section layout_padding" style="background-color: #F0E68C">
+
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <h1 style="font-size:70px">Payment</h1>
+            <p> Please check your bill carefully!</p>
+        </div>
+
+    </div>
+    <hr />
+    @if (ViewBag.CheckCart != null)
+    {
+        <div class="row" style="margin-left:40px;margin-right:40px">
+            <div id="ShowSuccess"></div>
+            <div class="col-md-9">
+                @{Html.RenderAction("Partial_CheckOut", "ShoppingCart"); }
+            </div>
+            <div class="col-md-3">
+
+                @{Html.RenderAction("Partical_Item_CheckOut", "ShoppingCart"); }
+
+            </div>
+        </div>
+    }
+    else
+            {
+                <div style="text-align:center">You haven't choose any items yet. Please return to <a href="/#CATEGORY">Product Page</a>  to purchase'</div>
+            }
+
+</div>
+
+@section scripts{
+    <script>
+        function OnFailure(rs) {
+            if (!rs.Success) {
+                $('#ShowSuccess').html("You made a failed purchase! Please try again");
+            }
+        };
+        $(document).ready(function () {
+            $('#myForm').validate({
+                rules: {
+                    'CustomerName': {
+                        required: true
+                    },
+                    'Phone': {
+                        required: true
+                    },
+                    'Addres': {
+                        required: true
+                    },
+                    'Email': {
+                        required: true,
+                        email:true
+                    }
+                },
+                messages: {
+                    'CustomerName': 'Customers name must fill',
+                    'Phone': 'Customers phone must fill',
+                    'Addres': 'Customers address must fill',
+                    'Email': 'Your email is not valid'
+                }
+            });
+        });
+
+    </script>
+}
+

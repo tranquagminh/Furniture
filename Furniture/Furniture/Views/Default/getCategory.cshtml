@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Furniture.Models.EF.category>
+
+<div class="services_section layout_padding" style="margin-top:-50px">
+    <div class="container">
+        <div class="services_section2 layout_padding">
+            <div class="row">
+                @foreach (var i in Model)
+                {
+                    <div class="col-lg-3 col-sm-6 mt-3 mb-3">
+                        <div class="card">
+                            <div class="icon_1"><img src="@i.img"></div>
+                            <h2 class="furnitures_text">@i.name</h2>
+                            <div class="read_bt_main mb-3">
+                                <div class="read_bt"><a href="@ViewBag.meta/@i.meta/">Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

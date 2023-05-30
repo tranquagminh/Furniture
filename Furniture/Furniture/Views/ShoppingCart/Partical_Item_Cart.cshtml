@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Furniture.Models.ShoppingCartItem>
+
+<table class="table table-hover" id="dataTables-example ">
+    <tr style="text-align:center">
+        <th>STT</th>
+        <th>Name</th>
+        <th>Picture</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quanlity</th>
+        <th>Total Price</th>
+        <th></th>
+    </tr>
+    @if (Model != null && Model.Any())
+    {
+        var i = 0;
+        double TongTien = 0;
+        foreach (var item in Model)
+        {
+            TongTien += item.TotalPrice;
+            <tr style="text-align:center" id="throw_@item.ProductId">
+                <td>@(i+1)</td>
+                <td>
+                    <a href="/san-pham/@item.Meta/@item.ProductId">
+                        @item.ProductName
+                    </a>
+                </td>
+                <td><img src="@item.ProductImage" width="60" /> </td>
+                <td>@item.ProductCategory</td>
+                <td>@item.Price</td>
+                <td><input type="number" style="width:100px;text-align:center" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
+                <td><b>@item.TotalPrice</b></td>
+                <td>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Delete</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Update</a>
+                </td>
+            </tr>
+            i++;
+        }
+        <tr>
+            <td colspan="6" style="text-align:right"><b>Total all your products</b></td>
+            <td style="text-align:center"><b>@TongTien</b></td>
+            <td></td>
+        </tr>
+       
+    }
+    else
+    {
+        <tr>
+            <td>You have no items on the cart!</td>
+        </tr>
+    }
+</table>

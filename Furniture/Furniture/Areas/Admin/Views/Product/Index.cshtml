@@ -1,0 +1,122 @@
+﻿@model Furniture.Models.EF.category
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayOut.cshtml";
+}
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Sản phẩm</a>
+        </li>
+    </ul>
+}
+@section Header{
+    <link href="~/Content/css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý sản phẩm</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách sản phẩm</h3>
+            <div class="card-tools">
+                <div class="btn-group">
+                    @Html.DropDownListFor(model => model.id, (SelectList)ViewBag.Category, " --- Tất cả sản phẩm --- ", new { @class = "form-control", @id = "Category" })
+                </div>
+                <a href="/admin/product/add" class="btn btn-primary">
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="getProduct"></div>
+
+
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Do you want to delete?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/product/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#throw_' + id).remove();
+                                location.reload();
+                            }
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        function getProduct() {
+            var CategoryId = $('#Category').val();
+            $.ajax({
+                url: '@Url.Action("getProduct", "product")',
+                type: "GET",
+                data: { id: CategoryId },
+                success: function (data) {
+                    $("#getProduct").html(data);
+                },
+                error: function (data) {
+                    alert("Something went wrong.");
+                }
+            });
+        }
+        getProduct();
+        $("#Category").change(function () {
+            getProduct();
+        })
+    })
+    </script>
+}
+@section Footer{
+    <script src="~/Content/css/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/css/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/demo/datatables-demo.js"></script>
+}
+

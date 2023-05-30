@@ -1,0 +1,141 @@
+﻿@model Furniture.Models.EF.News
+@{
+    ViewBag.Title = "Thêm mới tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayOut.cshtml";
+}
+
+<!-- Left navbar links -->
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/news" class="nav-link">Tin tức</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Thêm mới</a>
+        </li>
+    </ul>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới tin tức</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/news">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Tin tức</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thông tin thêm mới tin tức</h3>
+
+            <div class="card-tools">
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Add", "News", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <!-- your steps content here -->
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tiêu đề</label>
+                        @Html.TextBoxFor(x => x.name, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                        @Html.ValidationMessageFor(x => x.name, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mô tả</label>
+                        @Html.TextAreaFor(x => x.description, new { @class = "form-control", @placeholder = "Mô tả" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Chi tiết</label>
+                        @Html.TextAreaFor(x => x.detail, new { @class = "form-control", @placeholder = "Chi tiết", @id = "txtDetail" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Hide</label>
+                        @Html.DropDownListFor(x => x.hide, (new[] { new SelectListItem { Text = "True", Value = "true" }, new SelectListItem { Text = "False", Value = "false" } }), new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Link</label>
+                        @Html.TextBoxFor(x => x.link, new { @class = "form-control", @placeholder = "Link" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Meta</label>
+                        @Html.TextBoxFor(x => x.meta, new { @class = "form-control", @placeholder = "Meta" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Ảnh đại diện</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                @*<input type="file" class="custom-file-input" id="exampleInputFile">
+                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>*@
+                                @Html.TextBoxFor(x => x.img, new { @id = "txtImage", @class = "form-control" })
+                            </div>
+                            <div class="input-group-append">
+                                <input type="button" id="img" name="img" value="Tải ảnh" onclick="BrowserServer('txtImage');" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Thứ tự</label>
+                        @Html.TextBoxFor(x => x.order, new { @class = "form-control", @placeholder = "Thứ tự" })
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger" href="/admin/news">Previous</a>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDetail', {
+                customConfig: '/content/ckeditor/config.js',
+                extraAllowedContent: 'span'
+            });
+        });
+        function BrowserServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                document.getElementById(field).value = fileUrl;
+            };
+            finder.popup();
+        }
+    </script>
+    
+    }

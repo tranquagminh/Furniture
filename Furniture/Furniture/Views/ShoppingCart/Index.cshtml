@@ -1,0 +1,21 @@
+﻿
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="projects_section layout_padding">
+    <h1 style="text-align:center">Your Cart</h1>
+    <div id="load_data">
+        @{Html.RenderAction("Partical_Item_Cart", "ShoppingCart");}
+    </div>
+        @if (ViewBag.CheckCart != null)
+        {
+            <div class="text-right" style="margin-bottom:50px">
+                <a href="#" class="btn  btn-danger btnDeleteAll">Delete All</a>
+                <a href="/payment" class="btn btn-success">Payment</a>
+            </div>
+        }
+    
+</div>

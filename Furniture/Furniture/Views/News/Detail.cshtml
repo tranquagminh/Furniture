@@ -1,0 +1,35 @@
+﻿@model Furniture.Models.EF.News
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<div class="container">
+    <div class="row pt-4">
+        <h3 style="font-size: 24px; font-weight: bold; margin: 0; margin-bottom: 10px;">@Model.name</h3>
+        <div class="col-sm-4 col-md-8">
+            <p style="font-family: 'Times New Roman' ;font-size: 18px; margin-left: 21px; font-weight:bold;">@Model.description</p>
+            <p style="margin: 0; margin-bottom: 20px; font-size: 18px;">@Html.Raw(Model.detail)</p>
+        </div>
+        
+    </div>
+
+</div>
+
+<style>
+    .btn {
+        font-size: 16px;
+        background-color: #ff0000;
+        border: none;
+        color: #ffffff;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn1:hover {
+        background-color: #990000;
+    }
+</style>
+
+

@@ -1,0 +1,84 @@
+﻿@model Furniture.Models.EF.Product
+
+@{
+    ViewBag.Title = Model.name;
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-sm-6 col-md-6">
+            @{
+                var first = true;
+            }
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner decor" >
+                    @foreach (var i in Model.ProductImages)
+                    {
+                        <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
+                            <img src="@i.img">
+                        </div>
+                        first = false;
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="col-sm-6 col-md-6" style="font-family: sans-serif;">
+            <h3 style="font-size: 24px; font-weight: bold; margin: 0; margin-bottom: 10px;">@Model.name</h3>
+            <h5 style="font-size: 20px; color: #ff0000; margin: 0; margin-bottom: 20px;">$ @Model.price</h5>
+            <input style="width: auto;height: 42px;text-align:center" aria-label="quantity" class="input-qty" id="quantity_value" max="20" min="1" name="" type="number" value="1">
+            <div style="margin-top: 5px; padding: 10px; background-color: red; width: 22%; border-radius: 5px; text-align: center"><a href="#" data-id="@Model.id" class="btnAddToCart" style="color:white;">Add to cart</a></div>
+
+            <h4 style="margin:0; padding-top:20px;">MÔ TẢ: </h4>
+            <p style="margin: 0; margin-bottom: 20px; font-size: 18px;">@Html.Raw(Model.description)</p>
+
+        </div>
+    </div>
+
+   
+
+</div>
+
+<style>
+    .btn {
+        font-size: 16px;
+        background-color: #ff0000;
+        border: none;
+        color: #ffffff;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn1:hover {
+        background-color: #990000;
+    }
+    .decor{
+        height: 700px
+    }
+</style>
+
+
+<!-- Thư viện Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Thư viện jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Thư viện Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Khởi tạo carousel
+        $('.carousel').carousel();
+    });
+</script>

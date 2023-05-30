@@ -1,0 +1,35 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Furniture.Models.EF.News>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 pb-4">
+            <div class="card">
+                <div class="container_main">
+                    <img class="d-block w-100" src="@item.img" alt="@item.name" style=" background-size: cover;">
+                    <h3 class="temper_text" style="padding-left: 10px; padding-right: 10px"><a href="/tin-tuc/@item.meta/@item.id">@item.name</a></h3>
+                    <p class="dololr_text" style="padding-left: 10px; padding-right: 10px">@item.description</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", "News", new { page, pageSize = 6 , searchString = @Context.Request.QueryString["searchString"] }))
+
+<style>
+    .card{
+        border: medium;
+        box-shadow: inherit;
+    }
+    .container_main{
+        height: 500px;
+        
+        box-shadow: 10px;
+    }
+</style>
+
+
+

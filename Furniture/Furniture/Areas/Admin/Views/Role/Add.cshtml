@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@model IdentityRole
+@{
+    ViewBag.Title = "Thêm mới Quyền";
+    Layout = "~/Areas/Admin/Views/Shared/_LayOut.cshtml";
+}
+
+@section Header{
+    <link href="~/Content/css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Danh mục</a>
+        </li>
+    </ul>
+}
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thêm mới Quyền</h3>
+
+            <div class="card-tools">
+                <a href="/admin/role/add" class="btn btn-primary">
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Add", "Role", FormMethod.Post))
+            {
+                @Html.ValidationSummary(false)
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label>Tên quyền</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Thêm mới</button>
+                </div>
+            }
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+
+@section Footer{
+    <script src="~/Content/css/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/css/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/demo/datatables-demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });</script>
+}
